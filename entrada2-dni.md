@@ -6,7 +6,7 @@ En aquesta entrada explicaré la part de programació de l’activitat. He creat
 
 L’objectiu del programa és demanar a l’usuari el número del DNI sense lletra i calcular automàticament quina lletra li correspon.
 
-Per fer-ho, el programa utilitza el sistema oficial de càlcul de la lletra del DNI, que consisteix a dividir el número entre 23 i utilitzar el residu per seleccionar una lletra d’una cadena predeterminada.
+Per fer-ho, el programa utilitza el sistema de càlcul de la lletra del DNI, que consisteix a dividir el número entre 23 i utilitzar el residu per seleccionar una lletra d’una cadena predeterminada.
 
 ## Codi font
 
@@ -46,8 +46,10 @@ namespace CalculDNI
                 {
                     Console.WriteLine();
                     Console.WriteLine("ERROR: has d'introduir un número de DNI vàlid, entre 0 i 99999999.");
+                    Console.WriteLine();
                 }
-            } while (!correcte);
+
+            } while (!correcte || numeroDNI < 0 || numeroDNI > 99999999);
         }
     }
 }
@@ -65,16 +67,20 @@ char lletraDNI;
 bool correcte;
 ```
 
-La variable `numeroDNI` guarda el número que introdueix l’usuari. La variable `residu` guardarà el resultat de fer el mòdul del número entre 23. La cadena `lletres` conté totes les lletres possibles del DNI en l’ordre correcte. La variable `lletraDNI` guardarà la lletra calculada i la variable `correcte` servirà per comprovar si l’usuari ha introduït un número vàlid i per repetir el bucle demanant de nou a l'usuari fins que introdueixi un número vàlid.
+La variable `numeroDNI` guarda el número que introdueix l’usuari. La variable `residu` guarda el resultat de fer el mòdul del número entre 23. La cadena `lletres` conté totes les lletres possibles del DNI en l’ordre correcte. La variable `lletraDNI` guarda la lletra calculada i la variable `correcte` serveix per comprovar si l’usuari ha introduït un número.
 
-Després el programa mostra un títol per pantalla i demana el número del DNI:
+## Entrada de dades
+
+El programa mostra un títol per pantalla i demana el número del DNI:
 
 ```csharp
 Console.Write("Introdueix el número del DNI sense lletra: ");
 correcte = int.TryParse(Console.ReadLine(), out numeroDNI);
 ```
 
-Aquí he utilitzat `int.TryParse` perquè és més segur que fer servir directament `Convert.ToInt32`. Si l’usuari escriu text o un valor incorrecte, el programa no es tanca amb error, sinó que guarda `false` a la variable `correcte`.
+He utilitzat `int.TryParse` perquè és més segur que fer servir directament `Convert.ToInt32`. Si l’usuari escriu text o un valor incorrecte, el programa no es tanca amb error, sinó que guarda `false` a la variable `correcte`.
+
+## Validació del número
 
 A continuació, el programa comprova que el valor introduït sigui correcte i que estigui dins del rang permès:
 
@@ -88,7 +94,27 @@ Aquesta condició comprova tres coses:
 - Que el número no sigui negatiu.
 - Que el número no tingui més de 8 xifres.
 
-Si tot és correcte, es calcula el residu de dividir el número entre 23:
+Si tot és correcte, el programa calcula la lletra del DNI. Si no és correcte, mostra un missatge d’error.
+
+## Repetició del programa si hi ha error
+
+El programa està dins d’un bucle `do while`, que permet repetir la petició del DNI mentre el valor introduït no sigui vàlid:
+
+```csharp
+} while (!correcte || numeroDNI < 0 || numeroDNI > 99999999);
+```
+
+Aquesta condició fa que el programa torni a demanar el DNI si passa alguna d’aquestes situacions:
+
+- L’usuari no ha escrit un número.
+- L’usuari ha escrit un número negatiu.
+- L’usuari ha escrit un número superior a `99999999`.
+
+D’aquesta manera, el programa no finalitza fins que l’usuari introdueix un número de DNI vàlid.
+
+## Càlcul de la lletra
+
+Si el número és correcte, es calcula el residu de dividir el número entre 23:
 
 ```csharp
 residu = numeroDNI % 23;
@@ -103,6 +129,8 @@ lletraDNI = lletres[residu];
 ```
 
 Per exemple, si el residu és `0`, agafa la primera lletra de la cadena, que és `T`. Si el residu és `1`, agafa la `R`, i així successivament.
+
+## Mostrar el resultat
 
 Finalment, el programa mostra la lletra calculada i el DNI complet:
 
@@ -126,12 +154,6 @@ mostraria:
 ```
 
 Això és útil perquè el DNI s’ha de mostrar amb 8 números i una lletra.
-
-Si el valor introduït no és correcte, el programa mostra un missatge d’error:
-
-```csharp
-Console.WriteLine("ERROR: has d'introduir un número de DNI vàlid, entre 0 i 99999999.");
-```
 
 ## Sortida de prova 1
 
@@ -170,3 +192,5 @@ Introdueix el número del DNI sense lletra: hola
 
 ERROR: has d'introduir un número de DNI vàlid, entre 0 i 99999999.
 ```
+
+En aquest cas, com que el valor introduït no és numèric, el programa mostra un missatge d’error i torna a demanar el número del DNI.

@@ -34,7 +34,7 @@ namespace CalculDNI
                     Console.WriteLine();
                     Console.WriteLine("ERROR: has d'introduir un número de DNI vàlid, entre 0 i 99999999.");
                 }
-            } while (!correcte);
+            } while (!correcte || numeroDNI < 0 || numeroDNI > 99999999);
         }
     }
 }

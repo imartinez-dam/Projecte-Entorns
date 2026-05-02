@@ -1,6 +1,6 @@
 # Bloc de l'activitat de GitHub
 
-Aquest bloc forma part de l'activitat de l'assignatura d'Entorns de Desenvolupament.
+Aquest bloc forma part de l'activitat de la RA2 - IDEs de l'assignatura d'Entorns de Desenvolupament.
 
 En aquesta pràctica he creat un repositori amb GitHub, he treballat amb GitHub Desktop i he utilitzat Obsidian per gestionar els arxius Markdown en local abans de pujar-los al bloc.
 
@@ -11,9 +11,9 @@ En aquesta pràctica he creat un repositori amb GitHub, he treballat amb GitHub 
 
 ## Codi font del programa
 
-El codi font del programa de C# (Program.cs):
+El codi font del programa està disponible en l'arxiu `Program.cs`, dins la carpeta `ProgramaDNI`.
 
-[Veure codi font del programa DNI](ProgramaDNI/Program.cs)
+[Veure el codi font del programa DNI](ProgramaDNI/Program.cs)
 
 ## Eines utilitzades
 
