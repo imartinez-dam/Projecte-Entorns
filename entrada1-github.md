@@ -83,6 +83,7 @@ L'estructura principal del repositori és aquesta:
 ```text
 Projecte-Entorns/
 │
+├── README.md
 ├── index.md
 ├── entrada1-github.md
 ├── entrada2-dni.md
