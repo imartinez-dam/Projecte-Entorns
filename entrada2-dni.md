@@ -8,6 +8,11 @@ L’objectiu del programa és demanar a l’usuari el número del DNI sense llet
 
 Per fer-ho, el programa utilitza el sistema de càlcul de la lletra del DNI, que consisteix a dividir el número entre 23 i utilitzar el residu per seleccionar una lletra d’una cadena predeterminada.
 
+## Vídeo explicatiu
+
+En el següent vídeo explico el llenguatge utilitzat, les extensions necessàries a Visual Studio Code, el funcionament de l’algorisme i una demostració de l’execució del programa.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uZnDbvgFkRc" title="Vídeo explicatiu del programa DNI en C#" frameborder="0" allowfullscreen></iframe>
 ## Codi font
 
 ```csharp
